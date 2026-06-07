@@ -11,7 +11,7 @@ const TabLayout = () => {
   const insets = useSafeAreaInsets();
   const TabIcon = ({ focused, icon }: TabIconProps) => {
     return (
-      <View className="tabs-icons">
+      <View className="tabs-icon">
         <View className={clsx("tabs-pill", focused && "tabs-active")}>
           <Image source={icon} resizeMode="contain" className="tabs-glyph" />
         </View>
