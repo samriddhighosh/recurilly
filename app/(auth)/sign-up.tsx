@@ -1,4 +1,5 @@
 import { useAuth, useSignUp } from "@clerk/expo";
+import * as Linking from "expo-linking";
 import { Link, useRouter, type Href } from "expo-router";
 import { styled } from "nativewind";
 import { useState } from "react";
@@ -66,7 +67,11 @@ const SignUp = () => {
 
           const url = decorateUrl("/(tabs)");
           if (url.startsWith("http")) {
-            window.location.href = url;
+            if (Platform.OS === "web") {
+              window.location.href = url;
+            } else {
+              Linking.openURL(url);
+            }
           } else {
             router.replace("/(tabs)" as Href);
           }
